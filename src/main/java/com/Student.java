@@ -1,5 +1,17 @@
 package com;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
+/*
+    for convert JSON-data to-> JAVA-POJO then
+    if json variable/name & this getter,setter not exist inside to java-pojo(Student) then
+    it's give and exception ( UnrecognizedPropertyException )
+
+    if ignore this UnrecognizedPropertyException then add one annotation this java-pojo(Student) class.
+    @JsonIgnoreProperties(ignoreUnknown=true)
+ */
+
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class Student {
     private int id;
     private String firstName;
