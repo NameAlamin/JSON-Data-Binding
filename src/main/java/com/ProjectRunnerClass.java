@@ -1,6 +1,7 @@
 package com;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.SerializationFeature;
 
 import java.io.File;
 import java.io.IOException;
@@ -8,6 +9,9 @@ import java.io.IOException;
 public class ProjectRunnerClass {
     public static void main(String[] args) {
         try{
+            // ****************************  now convert JSON data to JAVA-POJO  ********************************
+
+
             // create ObjectMapper class this class provide jackson dependency
             ObjectMapper mapper = new ObjectMapper();
 
@@ -32,6 +36,12 @@ public class ProjectRunnerClass {
             for (String printLanguage:student1.getLanguages()) {
                 System.out.println(printLanguage);
             }
+
+
+            // ****************************  now convert JAVA-POJO to JSON data  ********************************
+            Java_Pojo_to_JSON_Conversion pojo_to_json = new Java_Pojo_to_JSON_Conversion();
+            mapper.enable(SerializationFeature.INDENT_OUTPUT);
+            mapper.writeValue(new File("data/output.json"),pojo_to_json);
 
         }catch (Exception e)
         {
